@@ -1,0 +1,17 @@
+name: "radicale"
+
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - "5232:5232"
+    restart: unless-stopped
+    volumes:
+      - ./data:/var/lib/radicale
+      - ./users:/home/radicale/.config/radicale/users
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: "1.0"
